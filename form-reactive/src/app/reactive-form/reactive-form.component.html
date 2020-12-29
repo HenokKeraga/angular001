@@ -1,0 +1,59 @@
+<div class="container">
+  <h1>Reactive form</h1>
+  <form [formGroup]="userForm" (ngSubmit)="submitData()">
+    <div>
+      <label>fullName </label>
+      <input type="text" formControlName="fullName" />
+      <span *ngIf="userForm.controls['fullName'].hasError('required')">
+        <span *ngIf="userForm.get('fullName').errors.required">
+          full name is requried</span
+        >
+      </span>
+
+      <span *ngIf="userForm.controls['fullName'].hasError('minlength')">
+        full name min length is 3
+      </span>
+    </div>
+    <div>
+      <label>email </label> <input type="text" formControlName="email" />
+      <span *ngIf="userForm.controls['email'].hasError('required')">
+        email is required
+      </span>
+      <span *ngIf="userForm.controls['email'].hasError('email')">
+        email should have email pattern
+      </span>
+    </div>
+    <div>
+      <label>address <input type="text" formControlName="address" /> </label>
+    </div>
+    <div>
+      <label> city <input type="text" formControlName="city" /> </label>
+    </div>
+    <div>
+      <label> phoneNo </label> <input type="text" formControlName="phoneNo" />
+      <span *ngIf="userForm.controls['phoneNo'].hasError('required')">
+        phone numnber is required</span
+      >
+      <span *ngIf="userForm.controls['phoneNo'].hasError('maxlength')">
+        phone number max length is 10</span
+      >
+    </div>
+    <div>
+      <label> password </label> <input type="text" formControlName="password" />
+      <span *ngIf="userForm.controls['password'].hasError('required')">
+        password is required</span
+      >
+    </div>
+    <div>
+      <label> confirm password </label>
+      <input type="text" formControlName="confirmPassword" />
+
+      <span *ngIf="userForm.get('confirmPassword')?.ConfirmPassword">
+        password must match</span
+      >
+    </div>
+    <div>
+      <label> <button type="submit" [disabled]='!userForm.valid' >Submit</button></label>
+    </div>
+  </form>
+</div>

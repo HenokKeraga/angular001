@@ -1,0 +1,39 @@
+<div class="container">
+        <h1>User data Form</h1>
+  <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && submitData()" [mustMatch]="['password','confirmPassword']">
+    <div class="form-group">
+      <label>Full Name </label>
+      <input type="text" [(ngModel)]="user.fullName"  class="form-control" name="fullName"  required #fullName="ngModel"/>
+      <span *ngIf="fullName.errors?.required"> full name is requried</span>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="user.email"  class="form-control" name="email" required  email #email="ngModel" />
+      <span *ngIf="email.errors?.required"> email is requried</span>
+      <span *ngIf="email.errors?.email"> email format is not correct</span>
+    </div>
+
+    <div class="form-group">
+      <label> Phone No </label>
+      <input type="text" [(ngModel)]="user.phoneNo"  class="form-control" name="phoneNo" required #phoneNo="ngModel"  maxlength="10" />
+      <span *ngIf="phoneNo.errors?.required">Phone numner is required</span>
+      <span *ngIf="phoneNo.errors?.maxlength"> max Phone numner length is 10 </span>
+    </div>
+
+    <div class="form-group">
+      <label>PassWord</label>
+      <input type="text" [(ngModel)]="user.password"  class="form-control" name="password" required #password="ngModel"/>
+      <span *ngIf="password.errors?.required">password is required</span>
+    </div>
+
+    <div class="form-group">
+      <label>confirm Password</label>
+      <input type="text" [(ngModel)]="user.confirmPassword" class="form-control" name="confirmPassword" required/>
+        <span *ngIf="password.errors?.mustMatch">password must match</span>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
