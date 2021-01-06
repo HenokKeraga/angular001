@@ -1,0 +1,7 @@
+<div class="">
+    <form [formGroup]="userForm" (ngSubmit)="register()">
+        <label>email<input type="text" formControlName="email"/></label>
+        <label>password<input type="text" formControlName="password" /></label>
+           <app-add-btn>Register</app-add-btn>
+    </form>
+</div>
